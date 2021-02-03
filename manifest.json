@@ -1,0 +1,17 @@
+{
+  "name": "コロナをコーラに変異させる",
+  "author": "yn-nishi",
+  "description" : "こーら",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/main.js"],
+    "run_at": "document_start"
+  }],
+  "browser_action": {
+    "name": "cola",
+    "default_popup": "html/popup.html"
+    },
+  "permissions": ["storage"]
+}
