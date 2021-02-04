@@ -1,67 +1,66 @@
-
-interface LocalStorage {
-  [key: string]: string
-}
-const initialSettings = { 'コロナ': 'コーラ', 'マスク': 'フリスク' }
-let settings: LocalStorage
-
-
+// Copyright 2021 yn-nishi All Rights Reserved.
+   
+// 設定内容を読み込んで表示
 chrome.storage.local.get(null, (storage)=>{
-  const stoKeys: string[] = Object.keys(storage)
-  let inputTag = ''
-  stoKeys.forEach((k, i) => {
-    // console.log('k',k)
-    // console.log('i',i)
-    inputTag +=
-    `<div style="display:inline-flex">
-      <input value="${k}" class="input" id="k-${i}">
-      <span class="arrow"></span>
-      <input value="${storage[k]}" class="input" id="v-${i}">
-    </div><br>`
-  })
-  inputTag +=
-  `<div style="display:inline-flex">
-    <input value="" class="input" id="k-${stoKeys.length}">
-    <span class="arrow"></span>
-    <input value="" class="input" id="v-${stoKeys.length}">
-  </div><br>`
-  const $input = document.getElementById('input')
-  if($input) $input.innerHTML = inputTag
-  document.getElementById('save')?.addEventListener('click', ()=>{
-    for (let i = 0; i < stoKeys.length + 1; i++) {
-      const newK = <HTMLInputElement>document.querySelector('#k-' + i)
-      const newKey = newK.value
-      const newV = <HTMLInputElement>document.querySelector('#v-' + i)
-      const newVal = newV.value
-      if(newKey && newVal) {
-        //登録処理
-        console.log(newK.value,':',newV.value)
-      }
+  const storageKeys: string[] = Object.keys(storage)
+  const storageLength = Object.keys(storage).length
+  if(Object.keys(storage).length < 2) chrome.storage.local.set(initialSettings)
+  const $inputArea = <HTMLElement>document.getElementById('input-area')
+  storageKeys.forEach((k, i) => {
+    if(k !== 'extensionFunction') {
+      addInput($inputArea, i, k, storage[k])
     }
+  })
+  addInput($inputArea, storageLength)
+  document.addEventListener("change", (e) => {
+      const numberOfInputs: number = document.querySelectorAll('#input-area input').length / 2
+      console.log(numberOfInputs)
+      const selectedId = (<HTMLInputElement>e.target)?.getAttribute('id')
+      if(selectedId === 'k-'+ (numberOfInputs - 1)) {
+      addInput($inputArea, numberOfInputs)
+      }
   })
 })
 
-const getSettings = (storage :LocalStorage) => {
-  if(storage) {
-    console.log('load_inside')
-    settings = storage
-  } else {
-    settings = initialSettings
-    chrome.storage.local.set(settings)
+// 設定更新処理
+document.getElementById('save')?.addEventListener('click', ()=>{
+  chrome.storage.local.clear()
+  const numberOfInputs: number = document.getElementsByTagName('input').length / 2
+  for (let i = 0; i < numberOfInputs - 1; i++) {
+    const newK = <HTMLInputElement>document.getElementById('k-' + i)
+    let newKey = newK.value.trim()
+    const newV = <HTMLInputElement>document.getElementById('v-' + i)
+    let newVal = newV.value
+    if(newKey && newKey !== 'extensionFunction') {
+      chrome.storage.local.set({ [newKey]: newVal })
+    }
   }
+  location.reload()
+})
+
+//<input> 作成 & 追加
+const addInput = (parent: HTMLElement, num: number, key: string = '', val: string ='') => {
+  const $div = document.createElement('div')
+  parent.appendChild($div)
+  const $newInputKey = <HTMLInputElement>document.createElement('input')
+  $newInputKey.type = 'search'
+  $newInputKey.className = 'rounded-circle ml-1 w-25'
+  $newInputKey.id = 'k-' + num
+  // $newInputKey.style.display = 'inline'
+  $newInputKey.className = 'input'
+  $newInputKey.setAttribute('value', key);
+  $div.appendChild($newInputKey)
+  const $arrow = document.createElement('div')
+  $arrow.className = 'arrow'
+  $div.appendChild($arrow)
+  const $newInputVal = document.createElement('input')
+  $newInputVal.type = 'search'
+  $newInputVal.className = 'input rounded ml-1'
+  $newInputVal.id = 'v-' + num
+  // $newInputVal.style.display = 'inline'
+  $newInputVal.className = 'input'
+  $newInputVal.setAttribute('value', val);
+  $div.appendChild($newInputVal)
 }
 
-// if($kw) $kw.textContent = kw['コロナ']
-
-
-
-// let myFunc = ():{[key: string]: string} => {
-//   let getProfile = ()=>{
-//   let profile = {
-//     name: 'Suzuki Ichiro',
-//     position : 'right'
-//   }
-//   return profile
-//   }
-//   return getProfile()
-// }
+const initialSettings = { 'コロナ': 'コーラ', 'マスク': 'フリスク' }   
