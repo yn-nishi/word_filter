@@ -10,29 +10,52 @@
       background-repeat: no-repeat;
       background-position: center;
       width: 20px;
-      height: 20px;
+      height: 12px;
       display: inline-block;
     }
-    input {
+    .input-pair {
+      text-align: center;
+    }
+    .input {
       width: 120px;
+      height: 20px;
+      font-size: 12px;
     }
     body {
       width: 300px;
       text-align: center;
     }
+    #save {
+      /* width: 70px;
+      height: 30px; */
+      font-size: 12px;
+      margin: 10px;
+    display: inline-block;
+    }
+    .component {
+      width: 200px;
+      /* text-align: left; */
+    }
+    #function-switch {
+    display: inline-block;
+    }
+    
     </style>
 </head>
 <body>
-      <div id="input-area"></div>
-      <!-- <button type="button" class="btn btn-primary btn-sm" id="save">保存する</button> -->
-      <button type="button" class="btn btn-outline-primary btn-sm">保存する</button>
-      <div id="message"></div>
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-        <label class="custom-control-label text-primary" for="customSwitch1" style="font-size: 14px;">
-          変換機能
-        </label>
+      <div id="input-area">
       </div>
+      <!-- <button type="button" class="btn btn-primary btn-sm" id="save">保存する</button> -->
+      <div class="component">
+        <div class="custom-control custom-switch" id="function-switch" style="cursor: pointer;">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label text-primary" for="customSwitch1" style="font-size: 14px;">
+            変換機能
+          </label>
+        </div>
+        <button type="button" class="btn btn-outline-primary btn-sm" id="save">保存する</button>
+        <div id="message"></div>
+     </div>
   <script src="../js/popup.js"></script>
 </body>
 </html>

@@ -1,20 +1,32 @@
 // Copyright 2021 yn-nishi All Rights Reserved.
 document.addEventListener("DOMContentLoaded",() => {
-
   chrome.storage.local.get(null, (storage)=>{
 
-    // メイン処理関数
+    // メイン処理
     const changeKeyword = (node: HTMLElement | ChildNode) => {
-      if(node.nodeType === 3 && !isIgnore(node)){
+      console.log('動作2')
+      const type = node.nodeType
+      if(type === 3 && !isIgnore(node)) {
         Object.keys(storage).forEach( key => {
           node.nodeValue = (<string>node.nodeValue).split(key).join(storage[key]);
         })
-      } else if (node.nodeType === 1 || node.nodeType === 9 || node.nodeType === 11) {
+      } else if (type === 1 || type === 9 || type === 11) {
         let child: ChildNode | null = node.firstChild;
         while(child){
           changeKeyword(child);
           child = child.nextSibling;
         }
+      }
+    }
+
+    // 設定読み込み
+    const loadSettings = () => {
+      if(Object.keys(storage).length < 2) {
+        chrome.storage.local.set(initialSettings)
+        console.log(initialSettings)
+      }
+      if(storage.extensionFunction === undefined) {
+        chrome.storage.local.set({'extensionFunction': true});
       }
     }
 
@@ -31,7 +43,14 @@ document.addEventListener("DOMContentLoaded",() => {
         // 処理負荷軽減のため最短1.5秒間隔
         setTimeout(() => { resolve(null)}, 1500 )
       })
-      .then(()=>{ changeKeyword(document.body) })
+      .then(()=>{ 
+        // if((<HTMLElement>document.activeElement).isContentEditable === false){
+          if((<HTMLElement>document.activeElement).isContentEditable === false && storage.extensionFunction){
+          console.log('動作1-2')
+          console.log(storage)
+          // changeKeyword(document.body)
+        }
+      })
       .then(()=>{ observer.observe(document.body, config) })
       })
     const config = {
@@ -39,9 +58,17 @@ document.addEventListener("DOMContentLoaded",() => {
       attributes: true
     }
 
-    if(Object.keys(storage).length < 2) chrome.storage.local.set(initialSettings)
-    //メイン処理実行命令
-    changeKeyword(document.body)
-    observer.observe(document.body, config);
+
+    // メイン処理実行命令
+    loadSettings()
+    if(storage.extensionFunction) {
+      // changeKeyword(document.body)
+      console.log('動作1-1')
+      console.log(storage)
+    }
+    observer.observe(document.body, config)
   })
+
+  const initialSettings = { 'コロナ': 'コーラ', 'マスク': 'フリスク' }   
 })
+
