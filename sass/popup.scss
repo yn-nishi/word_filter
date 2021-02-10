@@ -1,0 +1,131 @@
+$blue: #0d6efd;
+$white: #fff;
+$black: #212529;
+$backBlue:  rgba(205, 245, 239, 0.5);
+$shadowBlue: rgba(50, 130, 250, 0.5);
+$boxShadow1: 0 0 0 0.1rem $shadowBlue;
+$boxShadow2: 0 0 0 0.25rem $shadowBlue;
+
+@mixin baseInput {
+  background-color: $white;
+  border: 1px solid $blue;
+  border-radius: 0.15rem;
+  font-size: 0.7rem;
+}
+@mixin baseButton {
+  background-color: $white;
+  border: 1px solid $blue;
+  font-size: 0.7rem;
+  padding: 0rem 0.7rem;
+  margin: 0.3rem 0.2rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  transition: 0.3s;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+@mixin selectedButton {
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
+}
+
+body {
+  width: 19rem;
+  text-align: center;
+}
+
+ol#inputArea {
+vertical-align: middle;
+list-style-type: decimal;
+padding-left: 2rem;
+}
+
+li{
+  padding-left: 0;
+  text-align: left;
+}
+
+input[type="text"]{
+  background-color: $white;
+  border: 1px solid $blue;
+  border-radius: 0.15rem;
+  font-size: 0.7rem;
+  color: $black;
+  height: 1rem;
+  width: 6rem;
+  margin: 0.2rem;
+  &:focus {
+    outline: 0;
+    background-color: $backBlue;
+    box-shadow: $boxShadow1;
+  }
+}
+
+.btn {
+  @include baseButton;
+  color: $blue;
+  &:hover {
+    @include selectedButton;
+  }
+  &:focus {
+    @include selectedButton;
+    box-shadow: $boxShadow2;
+  }
+  &:active {
+    @include selectedButton;
+  }
+  &:active:focus{
+    box-shadow: $boxShadow2;
+  }
+  &:disabled {
+    @include selectedButton;
+  }
+}
+
+.btnOn {
+  @include baseButton;
+  @include selectedButton;
+  &:focus {
+    box-shadow: $boxShadow2;
+  }
+  &:active:focus{
+    box-shadow: $boxShadow2;
+  }
+}
+
+.x {
+  padding: 0.1rem 0.2rem;
+  margin-left: 0.3rem;
+  border-radius: 0.25rem;
+  transition: 0.3s;
+  border: 0;
+  color: $black;
+  cursor: pointer;
+  &:hover {
+    @include selectedButton;
+  }
+  &:focus {
+    @include selectedButton;
+    box-shadow: $boxShadow2;
+  }
+  &:active {
+    @include selectedButton;
+  }
+  &:active:focus{
+    box-shadow: $boxShadow2;
+  }
+  &:disabled {
+    @include selectedButton;
+  }
+}
+
+.arrow {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22fas%22%20data-icon%3D%22angle-double-right%22%20class%3D%22svg-inline--fa%20fa-angle-double-right%20fa-w-14%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M224.3%20273l-136%20136c-9.4%209.4-24.6%209.4-33.9%200l-22.6-22.6c-9.4-9.4-9.4-24.6%200-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6%200-33.9L54.3%20103c9.4-9.4%2024.6-9.4%2033.9%200l136%20136c9.5%209.4%209.5%2024.6.1%2034zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9%200l-22.6%2022.6c-9.4%209.4-9.4%2024.6%200%2033.9l96.4%2096.4-96.4%2096.4c-9.4%209.4-9.4%2024.6%200%2033.9l22.6%2022.6c9.4%209.4%2024.6%209.4%2033.9%200l136-136c9.4-9.2%209.4-24.4%200-33.8z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0.1rem 0.6rem;
+}

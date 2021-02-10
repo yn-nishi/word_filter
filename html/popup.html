@@ -1,64 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/popup.css">
   
   <meta charset="UTF-8">
-  <title>設定</title>
-  <style>
-    .arrow {
-      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20data-prefix%3D%22fas%22%20data-icon%3D%22angle-double-right%22%20class%3D%22svg-inline--fa%20fa-angle-double-right%20fa-w-14%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M224.3%20273l-136%20136c-9.4%209.4-24.6%209.4-33.9%200l-22.6-22.6c-9.4-9.4-9.4-24.6%200-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6%200-33.9L54.3%20103c9.4-9.4%2024.6-9.4%2033.9%200l136%20136c9.5%209.4%209.5%2024.6.1%2034zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9%200l-22.6%2022.6c-9.4%209.4-9.4%2024.6%200%2033.9l96.4%2096.4-96.4%2096.4c-9.4%209.4-9.4%2024.6%200%2033.9l22.6%2022.6c9.4%209.4%2024.6%209.4%2033.9%200l136-136c9.4-9.2%209.4-24.4%200-33.8z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 20px;
-      height: 12px;
-      display: inline-block;
-    }
-    .input-pair {
-      text-align: center;
-    }
-    .input {
-      width: 120px;
-      height: 20px;
-      font-size: 12px;
-    }
-    body {
-      width: 300px;
-      text-align: center;
-    }
-    #save {
-      /* width: 70px;
-      height: 30px; */
-      font-size: 12px;
-      margin: 10px;
-    display: inline-block;
-    }
-    .component {
-      width: 200px;
-      /* text-align: left; */
-    }
-    #function-switch {
-    display: inline-block;
-    }
-    
-    </style>
+  <title>ことばフィルター設定</title>
 </head>
 <body>
-      <div id="input-area">
-      </div>
-      <!-- <button type="button" class="btn btn-primary btn-sm" id="save">保存する</button> -->
-      <div class="component">
-        <div class="custom-control custom-switch" id="function-switch" style="cursor: pointer;">
-          <input type="checkbox" class="custom-control-input" id="customSwitch1">
-          <label class="custom-control-label text-primary" for="customSwitch1" style="font-size: 14px;">
-            変換機能
-          </label>
-        </div>
-        <button type="button" class="btn btn-outline-primary btn-sm" id="save">保存する</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" id="clear">全て削除</button>
-        <div id="notice"></div>
-     </div>
-     <script src="../js/bootstrap.min.js"></script>
+    <ol id="inputArea">
+    </ol>
+  <div class="component">
+    <button type="button" class="btn" id="on">ON</button>
+    <button type="button" class="btn" id="off">OFF</button>
+    <button type="button" class="btn" id="save">保存する</button>
+    <button type="button" class="btn" id="clear">全て削除</button>
+    <div id="notice"></div>
+  </div>
   <script src="../js/popup.js"></script>
 </body>
 </html>

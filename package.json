@@ -1,0 +1,18 @@
+{
+  "name": "03_cola",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "yn-nishi",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.129",
+    "gulp": "^4.0.2"
+  }
+}

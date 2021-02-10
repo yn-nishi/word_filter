@@ -1,7 +1,7 @@
 {
-  "name": "コロナをコーラに変異させる",
+  "name": "ことばフィルター",
   "author": "yn-nishi",
-  "description" : "こーら",
+  "description" : "感情を刺激する言葉を変換し、心の平穏を保ちます。",
   "version": "1.0.0",
   "manifest_version": 2,
   "content_scripts": [{
@@ -9,9 +9,18 @@
     "js": ["js/main.js"],
     "run_at": "document_start"
   }],
+  "permissions": ["storage"],
   "browser_action": {
-    "name": "cola",
-    "default_popup": "html/popup.html"
-    },
-  "permissions": ["storage"]
+    "name": "kotoba filter",
+    "default_popup": "html/popup.html",
+    "default_icon": {
+      "19": "images/19.png",
+      "38": "images/38.png"
+    }
+  },
+  "icons": {
+    "16": "images/16.png",
+    "48": "images/48.png",
+    "128": "images/128.png"
+  }
 }
