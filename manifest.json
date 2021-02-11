@@ -1,7 +1,7 @@
 {
   "name": "ことばフィルター",
   "author": "yn-nishi",
-  "description" : "感情を刺激する言葉を変換し、心の平穏を保ちます。",
+  "description" : "読みたくない言葉を別の言葉に変換して、不安を煽る言葉や誹謗中傷などから身を守ります。",
   "version": "1.0.0",
   "manifest_version": 2,
   "content_scripts": [{
@@ -10,6 +10,7 @@
     "run_at": "document_start"
   }],
   "permissions": ["storage"],
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "browser_action": {
     "name": "kotoba filter",
     "default_popup": "html/popup.html",

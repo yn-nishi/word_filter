@@ -14,9 +14,9 @@ li {
   text-align: left;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   background-color: #fff;
-  border: 1px solid #0d6efd;
+  border: 1px solid #198754;
   border-radius: 0.15rem;
   font-size: 0.7rem;
   color: #212529;
@@ -25,15 +25,15 @@ input[type="text"] {
   margin: 0.2rem;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="password"]:focus {
   outline: 0;
   background-color: rgba(205, 245, 239, 0.5);
-  box-shadow: 0 0 0 0.1rem rgba(50, 130, 250, 0.5);
+  box-shadow: 0 0 0 0.1rem rgba(7, 204, 7, 0.5);
 }
 
 .btn {
   background-color: #fff;
-  border: 1px solid #0d6efd;
+  border: 1px solid #198754;
   font-size: 0.7rem;
   padding: 0rem 0.7rem;
   margin: 0.3rem 0.2rem;
@@ -44,41 +44,41 @@ input[type="text"]:focus {
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  color: #0d6efd;
+  color: #198754;
 }
 
 .btn:hover {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .btn:focus {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.25rem rgba(50, 130, 250, 0.5);
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(7, 204, 7, 0.5);
 }
 
 .btn:active {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .btn:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(50, 130, 250, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(7, 204, 7, 0.5);
 }
 
 .btn:disabled {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .btnOn {
   background-color: #fff;
-  border: 1px solid #0d6efd;
+  border: 1px solid #198754;
   font-size: 0.7rem;
   padding: 0rem 0.7rem;
   margin: 0.3rem 0.2rem;
@@ -90,16 +90,16 @@ input[type="text"]:focus {
   vertical-align: middle;
   cursor: pointer;
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .btnOn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(50, 130, 250, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(7, 204, 7, 0.5);
 }
 
 .btnOn:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(50, 130, 250, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(7, 204, 7, 0.5);
 }
 
 .x {
@@ -114,31 +114,31 @@ input[type="text"]:focus {
 
 .x:hover {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .x:focus {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.25rem rgba(50, 130, 250, 0.5);
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(7, 204, 7, 0.5);
 }
 
 .x:active {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .x:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(50, 130, 250, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(7, 204, 7, 0.5);
 }
 
 .x:disabled {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgba(25, 135, 84, 0.8);
+  border-color: #198754;
 }
 
 .arrow {

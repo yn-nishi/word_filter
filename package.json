@@ -9,6 +9,7 @@
   "author": "yn-nishi",
   "license": "ISC",
   "dependencies": {
+    "@types/google.analytics": "0.0.41",
     "typescript": "^4.1.3"
   },
   "devDependencies": {

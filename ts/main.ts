@@ -1,7 +1,7 @@
 // Copyright 2021 yn-nishi All Rights Reserved.
 (() => {
 
-  // メイン処理
+  // メイン処理実行
   document.addEventListener('DOMContentLoaded',() => {
     chrome.storage.local.get(null, (storage)=>{
       initializeSettings(storage)
@@ -13,10 +13,11 @@
     })
   })
 
-  // 設定初期化
+  // 設定初期化  affect:機能OnOff, visibility:設定ワードの非表示, kw:変換キーワード
   const initializeSettings = (storage: { [key: string]: any } ) => {
     const initialSettings = {
       affect: true,
+      visibility: true,
       kw: [{ 'コロナ': 'コーラ' }, { 'マスク': 'フリスク' }]
     }
     if(storage.affect === undefined ) {
@@ -24,7 +25,6 @@
     }
   }
 
-  var $i = 0
   // <body>配下の文字列置換
   interface ChangeBody {
     (node: HTMLElement | ChildNode, storage: { [key: string]: any } ): void
@@ -65,24 +65,36 @@
   // DOMの動的変更を監視
   const observer = new MutationObserver(() => {
     observer.disconnect()
+    // 処理負荷軽減のため最短2.5秒待機
     new Promise((resolve) => {
-      // 処理負荷軽減のため最短1.5秒間隔
-      setTimeout(() => { resolve(null)}, 1500 )
-    }).then(()=>{
+      setTimeout(() => { resolve(null)}, 2500 )
+    })
+    // メイン処理実行
+    .then(()=>{
       chrome.storage.local.get(null, (storage)=>{
-        if( !isEditing() && storage.affect){
-        changeTitle(storage)
-        changeBody(document.body, storage)
+        if(storage.affect && !isEditing() && !isSelecting()){
+          changeTitle(storage)
+          changeBody(document.body, storage)
         }
       })
-    }).then(()=>{ observer.observe(document.body, config) })
     })
+    .then(()=>{
+      observer.observe(document.body, config)
+    })
+  })
   const config = {
     subtree: true,
     attributes: true
   }
+
+  // キーボード入力中にメイン処理の実行はしない(入力位置がズレてしまうため)
   const isEditing = () => {
     return (<HTMLElement>document.activeElement).isContentEditable
+  }
+
+  // 文字列ドラッグ選択中にメイン処理の実行はしない(選択解除されるため)
+  const isSelecting = () => {
+    return (<Selection>document.getSelection()).toString().trim().length > 1 
   }
 
 })()

@@ -1,20 +1,21 @@
-$blue: #0d6efd;
+$signatureColor: #198754;
+$buttonActiveColor:  rgba(#198754, 0.8);
+$backColor:  rgba(205, 245, 239, 0.5);
+$shadowColor: rgba(7, 204, 7, 0.5);
 $white: #fff;
 $black: #212529;
-$backBlue:  rgba(205, 245, 239, 0.5);
-$shadowBlue: rgba(50, 130, 250, 0.5);
-$boxShadow1: 0 0 0 0.1rem $shadowBlue;
-$boxShadow2: 0 0 0 0.25rem $shadowBlue;
+$boxShadow1: 0 0 0 0.1rem $shadowColor;
+$boxShadow2: 0 0 0 0.25rem $shadowColor;
 
 @mixin baseInput {
   background-color: $white;
-  border: 1px solid $blue;
+  border: 1px solid $signatureColor;
   border-radius: 0.15rem;
   font-size: 0.7rem;
 }
 @mixin baseButton {
   background-color: $white;
-  border: 1px solid $blue;
+  border: 1px solid $signatureColor;
   font-size: 0.7rem;
   padding: 0rem 0.7rem;
   margin: 0.3rem 0.2rem;
@@ -29,8 +30,8 @@ $boxShadow2: 0 0 0 0.25rem $shadowBlue;
 
 @mixin selectedButton {
   color: $white;
-  background-color: $blue;
-  border-color: $blue;
+  background-color: $buttonActiveColor;
+  border-color: $signatureColor;
 }
 
 body {
@@ -49,25 +50,27 @@ li{
   text-align: left;
 }
 
-input[type="text"]{
-  background-color: $white;
-  border: 1px solid $blue;
-  border-radius: 0.15rem;
-  font-size: 0.7rem;
-  color: $black;
-  height: 1rem;
-  width: 6rem;
-  margin: 0.2rem;
-  &:focus {
-    outline: 0;
-    background-color: $backBlue;
-    box-shadow: $boxShadow1;
+input{
+  &[type="text"], &[type="password"]{
+    background-color: $white;
+    border: 1px solid $signatureColor;
+    border-radius: 0.15rem;
+    font-size: 0.7rem;
+    color: $black;
+    height: 1rem;
+    width: 6rem;
+    margin: 0.2rem;
+    &:focus {
+      outline: 0;
+      background-color: $backColor;
+      box-shadow: $boxShadow1;
+    }
   }
 }
 
 .btn {
   @include baseButton;
-  color: $blue;
+  color: $signatureColor;
   &:hover {
     @include selectedButton;
   }
