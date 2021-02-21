@@ -12,10 +12,5 @@ Webページ上の文字を好きな言葉に変換できる拡張機能。
 
 ---
 
-### 開発者の独り言 Developer soliloquy
-TypescriptとSassを練習するついでに、  
-誰かに使ってもらえそうなものを作りたかったのでこれを作りました。
-
-While I practice Typescript and Sass,  
-I came up with this because I wanted to make something that would be useful to someone. 
-
+### インストール Install
+[ウェブストア Web Store](https://chrome.google.com/webstore/detail/%E3%81%93%E3%81%A8%E3%81%B0%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC/jkfnhdagbmjieiifkefmaimbdenhebnl)
