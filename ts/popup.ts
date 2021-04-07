@@ -46,7 +46,7 @@ const onOffButton = (storage: {[key: string]: any}) => {
       $off.className = 'btn'
       chrome.storage.local.set({ affect: true })
       document.getElementById('save')?.click()
-      notice('キーワードが保存され、変換機能が ON になりました。')
+      notice('変換機能が ON になりました。')
     })
     $off.addEventListener('click', () => {
       $on.className = 'btn'
