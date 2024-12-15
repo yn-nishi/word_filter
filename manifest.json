@@ -2,19 +2,19 @@
   "name": "ことばフィルター",
   "author": "yn-nishi",
   "description" : "読みたくない言葉を別の言葉に変換して、不安を煽る言葉や誹謗中傷などから身を守ります。",
-  "version": "1.0.0",
-  "manifest_version": 2,
+  "version": "1.0.2",
+  "manifest_version": 3,
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["js/main.js"],
     "run_at": "document_start"
   }],
   "permissions": ["storage"],
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-  "browser_action": {
+  "action": {
     "name": "kotoba filter",
     "default_popup": "html/popup.html",
     "default_icon": {
+      "16": "images/16.png",
       "19": "images/19.png",
       "38": "images/38.png"
     }
